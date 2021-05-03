@@ -1,8 +1,8 @@
-package io.fitify.workoutservice.models;
+package com.fittefrietjes.workoutservice.models;
 
-import io.fitify.workoutservice.enums.Aspect;
-import io.fitify.workoutservice.enums.Category;
-import io.fitify.workoutservice.enums.Level;
+import com.fittefrietjes.workoutservice.enums.Aspect;
+import com.fittefrietjes.workoutservice.enums.Category;
+import com.fittefrietjes.workoutservice.enums.Level;
 
 public class Workout {
     private int id;

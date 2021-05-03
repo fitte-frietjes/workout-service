@@ -1,18 +1,12 @@
-package io.fitify.workoutservice.controllers;
+package com.fittefrietjes.workoutservice.controllers;
 
-import io.fitify.workoutservice.enums.Aspect;
-import io.fitify.workoutservice.enums.Category;
-import io.fitify.workoutservice.enums.Level;
-import io.fitify.workoutservice.models.RunningWorkout;
-import io.fitify.workoutservice.models.Workout;
-import io.fitify.workoutservice.models.WorkoutFactory;
+import com.fittefrietjes.workoutservice.enums.Aspect;
+import com.fittefrietjes.workoutservice.models.Workout;
+import com.fittefrietjes.workoutservice.models.WorkoutFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value="/workout")
 public class WorkoutCtrl {

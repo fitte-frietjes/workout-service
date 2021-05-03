@@ -1,6 +1,6 @@
-package io.fitify.workoutservice.models;
+package com.fittefrietjes.workoutservice.models;
 
-import io.fitify.workoutservice.enums.Aspect;
+import com.fittefrietjes.workoutservice.enums.Aspect;
 
 public class WorkoutFactory{
 
@@ -14,8 +14,11 @@ public class WorkoutFactory{
             case SWIMMING:
                 workout = new SwimmingWorkout(2, "Swim a marathon", "Marathon swimming is a class of open water swimming defined by long distances (at least 10 kilometers) and traditional rules based in English Channel swimming. Unlike marathon foot-races which have a specifically defined distance, marathon swims vary in distance. However, one commonly used minimum definition is 10 kilometers, the distance of the marathon swimming event at the Olympic Games.");
                 break;
+            case CARDIO:
+                workout = new CardioWorkout(3, "Cardio", "CARDIOOOOOOOO");
+                break;
             default:
-                workout = new SwimmingWorkout(3, "RANDOM workout", "Decide for yourself.");
+                workout = new SwimmingWorkout(4, "RANDOM workout", "Decide for yourself.");
                 break;
         }
         return workout;

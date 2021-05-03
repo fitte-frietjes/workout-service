@@ -1,8 +1,6 @@
-package io.fitify.workoutservice;
+package com.fittefrietjes.workoutservice;
 
-import io.fitify.workoutservice.enums.Aspect;
-import io.fitify.workoutservice.models.Workout;
-import io.fitify.workoutservice.models.WorkoutFactory;
+import com.fittefrietjes.workoutservice.models.WorkoutFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
