@@ -1,14 +1,14 @@
-package com.fittefrietjes.workoutservice.controllers;
+package com.fittefrietjes.workout.controllers;
 
-import com.fittefrietjes.workoutservice.enums.Aspect;
-import com.fittefrietjes.workoutservice.models.Workout;
-import com.fittefrietjes.workoutservice.models.WorkoutFactory;
+import com.fittefrietjes.workout.enums.Aspect;
+import com.fittefrietjes.workout.models.Workout;
+import com.fittefrietjes.workout.models.WorkoutFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(value="/workout")
+@RequestMapping(value="/")
 public class WorkoutCtrl {
 
     @Autowired

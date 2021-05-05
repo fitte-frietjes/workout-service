@@ -1,8 +1,8 @@
-package com.fittefrietjes.workoutservice.models;
+package com.fittefrietjes.workout.models;
 
-import com.fittefrietjes.workoutservice.enums.Aspect;
-import com.fittefrietjes.workoutservice.enums.Category;
-import com.fittefrietjes.workoutservice.enums.Level;
+import com.fittefrietjes.workout.enums.Aspect;
+import com.fittefrietjes.workout.enums.Category;
+import com.fittefrietjes.workout.enums.Level;
 
 public class SwimmingWorkout extends Workout{
 

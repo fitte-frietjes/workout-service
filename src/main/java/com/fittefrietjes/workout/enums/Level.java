@@ -1,4 +1,4 @@
-package com.fittefrietjes.workoutservice.enums;
+package com.fittefrietjes.workout.enums;
 
 public enum Level {
     BEGINNER,INTERMEDIATE,ADVANCED

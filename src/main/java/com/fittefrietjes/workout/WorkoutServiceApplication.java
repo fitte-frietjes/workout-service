@@ -1,6 +1,6 @@
-package com.fittefrietjes.workoutservice;
+package com.fittefrietjes.workout;
 
-import com.fittefrietjes.workoutservice.models.WorkoutFactory;
+import com.fittefrietjes.workout.models.WorkoutFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
