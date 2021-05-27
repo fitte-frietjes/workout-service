@@ -8,7 +8,6 @@ import java.util.List;
 
 public class WorkoutManager {
 
-
     private iWorkoutHandler workoutHandler;
 
     /**

@@ -1,21 +1,21 @@
 package com.fittefrietjes.workout.models;
 
-public class ProfileWorkouts {
+public class ProfileWorkout {
 
     private int id;
     private int profileId;
     private int workoutId;
     private int duration;
 
-    public ProfileWorkouts(){ }
+    public ProfileWorkout(){ }
 
-    public ProfileWorkouts(int profileId, int workoutId, int duration) {
+    public ProfileWorkout(int profileId, int workoutId, int duration) {
         this.profileId = profileId;
         this.workoutId = workoutId;
         this.duration = duration;
     }
 
-    public ProfileWorkouts(int id, int profileId, int workoutId, int duration) {
+    public ProfileWorkout(int id, int profileId, int workoutId, int duration) {
         this.id = id;
         this.profileId = profileId;
         this.workoutId = workoutId;

@@ -3,7 +3,6 @@ package com.fittefrietjes.workout.controllers;
 import com.fittefrietjes.workout.enums.Type;
 import com.fittefrietjes.workout.managers.WorkoutManager;
 import com.fittefrietjes.workout.managers.handlers.workoutHandler;
-import com.fittefrietjes.workout.models.ProfileWorkouts;
 import com.fittefrietjes.workout.models.Workout;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/")
-public class WorkoutCtrl {
+public class WorkoutController {
 
     // Create manager with custom handler
     private WorkoutManager workoutManager = new WorkoutManager(new workoutHandler());
