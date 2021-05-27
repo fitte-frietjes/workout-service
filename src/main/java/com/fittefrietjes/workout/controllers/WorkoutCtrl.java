@@ -14,19 +14,28 @@ public class WorkoutCtrl {
     @Autowired
     private WorkoutFactory workoutFactory;
 
-    @GetMapping("/{aspectStr}")
-    public Workout getWorkoutFor(@PathVariable("aspectStr") String aspectStr){
-        aspectStr = aspectStr.toUpperCase();
+    @GetMapping("/type/{type}")
+    public Workout getWorkoutForType(@PathVariable("type") String type){
+        type = type.toUpperCase();
         Aspect aspect;
 
         try{
-            aspect = Aspect.valueOf(aspectStr);
+            aspect = Aspect.valueOf(type);
         }catch(Exception e){
             System.out.println(e);
             aspect = Aspect.RANDOM;
         }
 
         var workout = workoutFactory.constructWorkout(aspect);
+        return workout;
+    }
+
+    @GetMapping("/{profileId}")
+    public Workout getWorkoutForProfileId(@PathVariable("profileId") String profileId){
+        Aspect aspect = Aspect.RANDOM;
+
+        var workout = workoutFactory.constructWorkout(aspect);
+
         return workout;
     }
 }
