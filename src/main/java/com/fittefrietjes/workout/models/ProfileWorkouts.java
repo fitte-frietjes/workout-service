@@ -1,25 +1,21 @@
 package com.fittefrietjes.workout.models;
 
-import com.fittefrietjes.workout.enums.Aspect;
-import com.fittefrietjes.workout.enums.Category;
-import com.fittefrietjes.workout.enums.Level;
-
-public class ProfileWorkout {
+public class ProfileWorkouts {
 
     private int id;
     private int profileId;
     private int workoutId;
     private int duration;
 
-    public ProfileWorkout(){ }
+    public ProfileWorkouts(){ }
 
-    public ProfileWorkout(int profileId, int workoutId, int duration) {
+    public ProfileWorkouts(int profileId, int workoutId, int duration) {
         this.profileId = profileId;
         this.workoutId = workoutId;
         this.duration = duration;
     }
 
-    public ProfileWorkout(int id, int profileId, int workoutId, int duration) {
+    public ProfileWorkouts(int id, int profileId, int workoutId, int duration) {
         this.id = id;
         this.profileId = profileId;
         this.workoutId = workoutId;

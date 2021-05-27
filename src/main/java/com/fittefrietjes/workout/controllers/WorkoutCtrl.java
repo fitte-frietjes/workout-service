@@ -1,72 +1,122 @@
 package com.fittefrietjes.workout.controllers;
 
-import com.fittefrietjes.workout.enums.Aspect;
-import com.fittefrietjes.workout.models.ProfileWorkout;
+import com.fittefrietjes.workout.enums.Type;
+import com.fittefrietjes.workout.managers.WorkoutManager;
+import com.fittefrietjes.workout.managers.handlers.workoutHandler;
+import com.fittefrietjes.workout.models.ProfileWorkouts;
 import com.fittefrietjes.workout.models.Workout;
-import com.fittefrietjes.workout.models.WorkoutFactory;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(value="/")
+@RequestMapping(value = "/")
 public class WorkoutCtrl {
 
-    @Autowired
-    private WorkoutFactory workoutFactory;
+    // Create manager with custom handler
+    private WorkoutManager workoutManager = new WorkoutManager(new workoutHandler());
 
-    @GetMapping("/type/{type}")
-    public Workout getWorkoutForType(@PathVariable("type") String type){
-        type = type.toUpperCase();
-        Aspect aspect;
-
-        try{
-            aspect = Aspect.valueOf(type);
-        }catch(Exception e){
-            System.out.println(e);
-            aspect = Aspect.RANDOM;
-        }
-
-        var workout = workoutFactory.constructWorkout(aspect);
-        return workout;
-    }
-
-    @GetMapping("/{profileId}")
-    public Workout getWorkoutForProfileId(@PathVariable("profileId") int profileId){
-        Aspect aspect = Aspect.RANDOM;
-
-        var workout = workoutFactory.constructWorkout(aspect);
-
-        return workout;
-    }
-
-
-
-    @Operation(summary = "Post a profileWorkout object",
-            description = "Save a new profileWorkout object ")
+    @Operation(summary = "Get all workouts of a given type",
+            description = "Get list all workouts for a given type")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200",
                     description = "Post successful",
                     content = {@Content(mediaType = "application/json")}
             ),
             @ApiResponse(responseCode = "500",
-                    description = "Error while creating profileWorkout",
+                    description = "Error while getting workouts",
                     content = {@Content}
             ),
     })
-    @PostMapping("/addWorkout")
-    public ResponseEntity CreateNewWorkoutForProfile(@RequestBody ProfileWorkout profileWorkout){
-
-        // TODO: Save to in memory database
-        profileWorkout.setId(1);
-
-        return ResponseEntity.ok(profileWorkout);
+    @GetMapping("/type/{type}")
+    public ResponseEntity getWorkoutForType(@PathVariable("type") Type type) {
+        var workouts = workoutManager.getAllByType(type);
+        return ResponseEntity.ok(workouts);
     }
 
+
+    @Operation(summary = "Get all workouts",
+            description = "Get list all workouts")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Post successful",
+                    content = {@Content(mediaType = "application/json")}
+            ),
+            @ApiResponse(responseCode = "500",
+                    description = "Error while getting workouts",
+                    content = {@Content}
+            ),
+    })
+    @GetMapping("/")
+    public ResponseEntity getAllWorkouts() {
+        var workouts = workoutManager.getAll();
+        return ResponseEntity.ok(workouts);
+    }
+
+
+    @Operation(summary = "Get workout by id",
+            description = "Get a workout by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Workout found",
+                    content = {@Content(mediaType = "application/json")}
+            ),
+            @ApiResponse(responseCode = "404",
+                    description = "Workout not found",
+                    content = {@Content}
+            ),
+            @ApiResponse(responseCode = "500",
+                    description = "Error while getting Workout",
+                    content = {@Content}
+            ),
+    })
+    @GetMapping("/{id}")
+    public ResponseEntity getAllWorkouts(@PathVariable("id") int id) {
+        var workouts = workoutManager.getById(id);
+
+        if(workouts == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+
+        return ResponseEntity.ok(workouts);
+    }
+
+//    @Operation(summary = "Get profile workouts",
+//            description = "Get all workouts of a profile ")
+//    @ApiResponses(value = {
+//            @ApiResponse(responseCode = "200",
+//                    description = "Post successful",
+//                    content = {@Content(mediaType = "application/json")}
+//            ),
+//            @ApiResponse(responseCode = "500",
+//                    description = "Error while getting workouts",
+//                    content = {@Content}
+//            ),
+//    })
+//    @GetMapping("/profile/{profileId}")
+//    public Workout getWorkoutsForProfileId(@PathVariable("profileId") int profileId) {
+//        return null;
+//    }
+
+    @Operation(summary = "Post a workout object",
+            description = "Save a new workout object ")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Post successful",
+                    content = {@Content(mediaType = "application/json")}
+            ),
+            @ApiResponse(responseCode = "500",
+                    description = "Error while saving workout",
+                    content = {@Content}
+            ),
+    })
+    @PostMapping("/")
+    public ResponseEntity SaveWorkout(@RequestBody Workout workout) {
+       var savedWorkout =  workoutManager.save(workout);
+        return ResponseEntity.ok(savedWorkout);
+    }
 }

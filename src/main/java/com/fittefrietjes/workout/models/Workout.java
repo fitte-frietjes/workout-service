@@ -1,20 +1,20 @@
 package com.fittefrietjes.workout.models;
 
-import com.fittefrietjes.workout.enums.Aspect;
+import com.fittefrietjes.workout.enums.Type;
 import com.fittefrietjes.workout.enums.Category;
 import com.fittefrietjes.workout.enums.Level;
 
 public class Workout {
     private int id;
-    private Aspect aspect;
+    private Type type;
     private Level level;
     private Category category;
     private String name;
     private String description;
 
-    public Workout(int id, Aspect aspect, Level level, Category category, String name, String description) {
+    public Workout(int id, Type type, Level level, Category category, String name, String description) {
         this.id = id;
-        this.aspect = aspect;
+        this.type = type;
         this.level = level;
         this.category = category;
         this.name = name;
@@ -25,8 +25,8 @@ public class Workout {
         return id;
     }
 
-    public Aspect getAspect() {
-        return aspect;
+    public Type getType() {
+        return type;
     }
 
     public Level getLevel() {

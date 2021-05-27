@@ -1,5 +1,5 @@
 package com.fittefrietjes.workout.enums;
 
-public enum Aspect {
+public enum Type {
     CALISTHENICS, RUNNING, SWIMMING, FITNESS, RANDOM, CARDIO
 }
