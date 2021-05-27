@@ -6,6 +6,7 @@ public class ProfileWorkout {
     private int profileId;
     private int workoutId;
     private int duration;
+    private Workout workout;
 
     public ProfileWorkout(){ }
 
@@ -54,7 +55,13 @@ public class ProfileWorkout {
         this.duration = duration;
     }
 
+    public Workout getWorkout() {
+        return workout;
+    }
 
+    public void setWorkout(Workout workout) {
+        this.workout = workout;
+    }
 
 
 }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(value = "/")
+@RequestMapping(value = "/workout")
 public class WorkoutController {
 
     // Create manager with custom handler
@@ -83,23 +83,6 @@ public class WorkoutController {
 
         return ResponseEntity.ok(workouts);
     }
-
-//    @Operation(summary = "Get profile workouts",
-//            description = "Get all workouts of a profile ")
-//    @ApiResponses(value = {
-//            @ApiResponse(responseCode = "200",
-//                    description = "Post successful",
-//                    content = {@Content(mediaType = "application/json")}
-//            ),
-//            @ApiResponse(responseCode = "500",
-//                    description = "Error while getting workouts",
-//                    content = {@Content}
-//            ),
-//    })
-//    @GetMapping("/profile/{profileId}")
-//    public Workout getWorkoutsForProfileId(@PathVariable("profileId") int profileId) {
-//        return null;
-//    }
 
     @Operation(summary = "Post a workout object",
             description = "Save a new workout object ")

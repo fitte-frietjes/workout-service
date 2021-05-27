@@ -1,7 +1,10 @@
 package com.fittefrietjes.workout.controllers;
 
 import com.fittefrietjes.workout.managers.ProfileWorkoutManager;
+import com.fittefrietjes.workout.managers.WorkoutManager;
 import com.fittefrietjes.workout.managers.handlers.profileWorkoutHandler;
+import com.fittefrietjes.workout.managers.handlers.workoutHandler;
+import com.fittefrietjes.workout.models.ProfileWorkout;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -12,10 +15,11 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(value = "/profile")
+@RequestMapping(value = "/profileWorkout")
 public class ProfileWorkoutController {
 
     private ProfileWorkoutManager profileWorkoutManager = new ProfileWorkoutManager(new profileWorkoutHandler());
+    private WorkoutManager workoutManager = new WorkoutManager(new workoutHandler());
 
     @Operation(summary = "Get Profile Workout by id",
             description = "Get a Profile Workout by id")
@@ -66,31 +70,10 @@ public class ProfileWorkoutController {
         if (profileWorkouts == null)
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 
-        return ResponseEntity.ok(profileWorkouts);
-    }
-
-    @Operation(summary = "Get Profile Workouts by workout id",
-            description = "Get a Profile Workouts by workout id")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200",
-                    description = "ProfileWorkout found",
-                    content = {@Content(mediaType = "application/json")}
-            ),
-            @ApiResponse(responseCode = "404",
-                    description = "No ProfileWorkouts found",
-                    content = {@Content}
-            ),
-            @ApiResponse(responseCode = "500",
-                    description = "Error while getting ProfileWorkout",
-                    content = {@Content}
-            ),
-    })
-    @GetMapping("/workout/{id}")
-    public ResponseEntity getByWorkoutId(@PathVariable("id") int id) {
-
-        var profileWorkouts = profileWorkoutManager.getByWorkout(id);
-        if (profileWorkouts == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        for (ProfileWorkout pw : profileWorkouts) {
+            var workout = workoutManager.getById(pw.getWorkoutId());
+            pw.setWorkout(workout);
+        }
 
         return ResponseEntity.ok(profileWorkouts);
     }
