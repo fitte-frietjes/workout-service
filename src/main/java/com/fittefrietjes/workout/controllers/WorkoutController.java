@@ -2,12 +2,13 @@ package com.fittefrietjes.workout.controllers;
 
 import com.fittefrietjes.workout.enums.Type;
 import com.fittefrietjes.workout.managers.WorkoutManager;
-import com.fittefrietjes.workout.managers.handlers.workoutHandler;
+import com.fittefrietjes.workout.managers.handlers.WorkoutHandler;
 import com.fittefrietjes.workout.models.Workout;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +18,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/workout")
 public class WorkoutController {
 
-    // Create manager with custom handler
-    private WorkoutManager workoutManager = new WorkoutManager(new workoutHandler());
+    @Autowired
+    private WorkoutManager workoutManager;
 
     @Operation(summary = "Get all workouts of a given type",
             description = "Get list all workouts for a given type")

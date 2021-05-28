@@ -9,7 +9,7 @@ import com.fittefrietjes.workout.models.Workout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class workoutHandler implements iWorkoutHandler {
+public class WorkoutHandler implements iWorkoutHandler {
 
     List<Workout> workouts = new ArrayList<>();
 
@@ -17,7 +17,7 @@ public class workoutHandler implements iWorkoutHandler {
      * Create a list of workouts on startup.
      * This way we dont have to setup a DB for testing/demo
      */
-    public workoutHandler() {
+    public WorkoutHandler() {
         workouts.add(new Workout(1, Type.RUNNING, Level.BEGINNER, Category.LEGS,"Running for beginner","blaat"));
         workouts.add(new Workout(2, Type.RUNNING, Level.INTERMEDIATE, Category.LEGS,"Running for intermediate","blaat"));
         workouts.add(new Workout(3, Type.RUNNING, Level.ADVANCED, Category.LEGS,"Running for advanced","blaat"));

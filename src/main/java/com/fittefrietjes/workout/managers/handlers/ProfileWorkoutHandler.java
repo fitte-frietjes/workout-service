@@ -6,12 +6,12 @@ import com.fittefrietjes.workout.models.ProfileWorkout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class profileWorkoutHandler implements iProfileWorkoutHandler {
+public class ProfileWorkoutHandler implements iProfileWorkoutHandler {
 
     List<ProfileWorkout> profileWorkouts = new ArrayList<>();
 
 
-    public profileWorkoutHandler() {
+    public ProfileWorkoutHandler() {
         profileWorkouts.add(new ProfileWorkout(1, 1, 1, 200));
         profileWorkouts.add(new ProfileWorkout(2, 2, 3, 500));
         profileWorkouts.add(new ProfileWorkout(3, 1, 5, 200));
