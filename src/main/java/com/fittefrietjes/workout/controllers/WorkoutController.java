@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(value = "/workout")
+@RequestMapping(value = "/")
 public class WorkoutController {
 
     @Autowired
@@ -52,7 +52,7 @@ public class WorkoutController {
                     content = {@Content}
             ),
     })
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity getAllWorkouts() {
         var workouts = workoutManager.getAll();
         return ResponseEntity.ok(workouts);

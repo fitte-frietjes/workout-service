@@ -81,4 +81,16 @@ public class ProfileWorkoutController {
         return ResponseEntity.ok(profileWorkouts);
     }
 
+
+    @PostMapping("")
+    public ResponseEntity saveProfileWorkout(@RequestBody ProfileWorkout pw){
+
+        var savedPw = profileWorkoutManage.save(pw);
+
+        if(savedPw == null)
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+
+        return ResponseEntity.ok(savedPw);
+    }
+
 }
