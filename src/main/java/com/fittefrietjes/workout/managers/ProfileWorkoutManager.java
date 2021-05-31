@@ -36,5 +36,9 @@ public class ProfileWorkoutManager {
             return profileWorkoutHandler.create(profileWorkout);
     }
 
+    public boolean delete(ProfileWorkout profileWorkout){
+        return  profileWorkoutHandler.delete(profileWorkout);
+    }
+
 }
 
