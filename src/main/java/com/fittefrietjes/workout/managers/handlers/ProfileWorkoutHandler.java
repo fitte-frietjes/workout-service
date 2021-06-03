@@ -110,7 +110,7 @@ public class ProfileWorkoutHandler implements iProfileWorkoutHandler {
     @Override
     public boolean delete(ProfileWorkout profileWorkout) {
         for (ProfileWorkout pw : profileWorkouts) {
-            if (pw.getWorkoutId() == profileWorkout.getId()) {
+            if (pw.getId() == profileWorkout.getId()) {
                 var record = profileWorkouts.get(pw.getWorkoutId() - 1);
                 var result = profileWorkouts.remove(record);
                 return result;
