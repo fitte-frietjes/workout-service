@@ -81,4 +81,58 @@ public class ProfileWorkoutController {
         return ResponseEntity.ok(profileWorkouts);
     }
 
+    @Operation(summary = "Save ProfileWorkout",
+            description = "Create or update ProfileWorkout")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "ProfileWorkout saved",
+                    content = {@Content(mediaType = "application/json")}
+            ),
+            @ApiResponse(responseCode = "400",
+                    description = "No ProfileWorkouts found",
+                    content = {@Content}
+            ),
+            @ApiResponse(responseCode = "500",
+                    description = "Error while saving ProfileWorkout",
+                    content = {@Content}
+            ),
+    })
+    @PostMapping("")
+    public ResponseEntity saveProfileWorkout(@RequestBody ProfileWorkout pw) {
+
+        var savedPw = profileWorkoutManage.save(pw);
+
+        if (savedPw == null)
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+
+        return ResponseEntity.ok(savedPw);
+    }
+
+    @Operation(summary = "Delete ProfileWorkout",
+            description = "Delete a ProfileWorkout")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "ProfileWorkout Deleted",
+                    content = {@Content(mediaType = "application/json")}
+            ),
+            @ApiResponse(responseCode = "400",
+                    description = "ProfileWorkout not deleted",
+                    content = {@Content}
+            ),
+            @ApiResponse(responseCode = "500",
+                    description = "Error while deleting ProfileWorkout",
+                    content = {@Content}
+            ),
+    })
+    @DeleteMapping("")
+    public ResponseEntity deleteProfileWorkout(@RequestBody ProfileWorkout pw) {
+
+        var result = profileWorkoutManage.delete(pw);
+
+        if (result)
+            return ResponseEntity.ok(null);
+        else
+            return ResponseEntity.badRequest().body(null);
+    }
+
 }

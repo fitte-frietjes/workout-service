@@ -72,17 +72,32 @@ public class ProfileWorkoutHandler implements iProfileWorkoutHandler {
      */
     @Override
     public ProfileWorkout create(ProfileWorkout profileWorkout) {
-        return null;
+
+        // Set id
+        profileWorkout.setId(profileWorkouts.size() + 1);
+
+        // Add to Array
+        profileWorkouts.add(profileWorkout);
+
+        return profileWorkout;
     }
 
     /**
      * Update an ProfileWorkout
+     * Can only update Duration
      *
      * @param profileWorkout
      * @return
      */
     @Override
     public ProfileWorkout update(ProfileWorkout profileWorkout) {
+
+        for (ProfileWorkout pw : profileWorkouts) {
+            if (pw.getWorkoutId() == profileWorkout.getId()) {
+                pw.setDuration(profileWorkout.getDuration());
+                return profileWorkout;
+            }
+        }
         return null;
     }
 
@@ -94,6 +109,13 @@ public class ProfileWorkoutHandler implements iProfileWorkoutHandler {
      */
     @Override
     public boolean delete(ProfileWorkout profileWorkout) {
+        for (ProfileWorkout pw : profileWorkouts) {
+            if (pw.getWorkoutId() == profileWorkout.getId()) {
+                var record = profileWorkouts.get(pw.getWorkoutId() - 1);
+                var result = profileWorkouts.remove(record);
+                return result;
+            }
+        }
         return false;
     }
 }
