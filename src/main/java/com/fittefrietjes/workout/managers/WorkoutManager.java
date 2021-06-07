@@ -12,6 +12,7 @@ public class WorkoutManager {
 
     /**
      * Business logic here
+     *
      * @param workoutHandler
      */
     public WorkoutManager(iWorkoutHandler workoutHandler) {
@@ -26,15 +27,19 @@ public class WorkoutManager {
         return workoutHandler.getAll();
     }
 
-    public List<Workout> getAllByType(Type type ) {
+    public List<Workout> getAllByType(Type type) {
         return workoutHandler.getAllOfType(type);
     }
 
-    public Workout save(Workout workout) {
-        if (workout.getId() != 0)
-            return workoutHandler.update(workout);
-        else
-            return workoutHandler.create(workout);
+    public Workout update(Workout workout) {
+        // Checks here
+        return workoutHandler.update(workout);
     }
+
+    public Workout create(Workout workout) {
+        // Checks here
+        return workoutHandler.create(workout);
+    }
+
 
 }

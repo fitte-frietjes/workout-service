@@ -21,6 +21,14 @@ public class Workout {
         this.description = description;
     }
 
+    public Workout(Type running, Level beginner, Category legs, String running_for_beginner, String blaat) {
+        this.type = type;
+        this.level = level;
+        this.category = category;
+        this.name = name;
+        this.description = description;
+    }
+
     public int getId() {
         return id;
     }

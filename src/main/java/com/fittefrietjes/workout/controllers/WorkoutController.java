@@ -79,7 +79,7 @@ public class WorkoutController {
     public ResponseEntity getAllWorkouts(@PathVariable("id") int id) {
         var workouts = workoutManager.getById(id);
 
-        if(workouts == null)
+        if (workouts == null)
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 
         return ResponseEntity.ok(workouts);
@@ -98,8 +98,26 @@ public class WorkoutController {
             ),
     })
     @PostMapping("/")
-    public ResponseEntity SaveWorkout(@RequestBody Workout workout) {
-       var savedWorkout =  workoutManager.save(workout);
+    public ResponseEntity CreateWorkout(@RequestBody Workout workout) {
+        var savedWorkout = workoutManager.create(workout);
+        return ResponseEntity.ok(savedWorkout);
+    }
+
+    @Operation(summary = "Put a workout object",
+            description = "Update a new workout object ")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Put successful",
+                    content = {@Content(mediaType = "application/json")}
+            ),
+            @ApiResponse(responseCode = "500",
+                    description = "Error while saving workout",
+                    content = {@Content}
+            ),
+    })
+    @PutMapping("/")
+    public ResponseEntity UpdateWorkout(@RequestBody Workout workout) {
+        var savedWorkout = workoutManager.update(workout);
         return ResponseEntity.ok(savedWorkout);
     }
 }
