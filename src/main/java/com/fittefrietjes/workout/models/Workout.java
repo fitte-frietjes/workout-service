@@ -12,6 +12,10 @@ public class Workout {
     private String name;
     private String description;
 
+    public Workout(){
+
+    }
+
     public Workout(int id, Type type, Level level, Category category, String name, String description) {
         this.id = id;
         this.type = type;

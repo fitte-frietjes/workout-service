@@ -99,6 +99,11 @@ public class WorkoutController {
     })
     @PostMapping("/")
     public ResponseEntity CreateWorkout(@RequestBody Workout workout) {
+
+        if (workout.getName() == null)
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+
+
         var savedWorkout = workoutManager.create(workout);
         return ResponseEntity.ok(savedWorkout);
     }

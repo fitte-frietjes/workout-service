@@ -5,6 +5,7 @@ import com.fittefrietjes.workout.controllers.WorkoutController;
 import com.fittefrietjes.workout.enums.Category;
 import com.fittefrietjes.workout.enums.Level;
 import com.fittefrietjes.workout.enums.Type;
+import com.fittefrietjes.workout.managers.WorkoutManager;
 import com.fittefrietjes.workout.managers.handlers.WorkoutHandler;
 import com.fittefrietjes.workout.models.Workout;
 import com.google.gson.Gson;
@@ -19,6 +20,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +38,7 @@ public class WorkoutControllerIntegrationTests {
     private MockMvc mvc;
 
     @MockBean
-    private WorkoutHandler handler;
+    private WorkoutManager manager;
 
     List<Workout> workouts;
 
@@ -53,7 +55,7 @@ public class WorkoutControllerIntegrationTests {
     void GetAll_Workouts_ShouldReturn_ListOfWorkouts() throws Exception {
 
         // Setup mock
-        Mockito.when(handler.getAll()).thenReturn(workouts);
+        Mockito.when(manager.getAll()).thenReturn(workouts);
 
         // Create expected response
         var expectedResponse = new Gson().toJson(workouts);
@@ -68,7 +70,7 @@ public class WorkoutControllerIntegrationTests {
     void GetAll_Workouts_WithoutWorkouts_ShouldReturn_EmptyList() throws Exception {
 
         // Setup mock
-        Mockito.when(handler.getAll()).thenReturn(new ArrayList<Workout>());
+        Mockito.when(manager.getAll()).thenReturn(new ArrayList<Workout>());
 
         // Create expected response
         var expectedResponse = new Gson().toJson(new ArrayList<Workout>());
@@ -84,7 +86,7 @@ public class WorkoutControllerIntegrationTests {
     void GetByID_ShouldReturn_Workout() throws Exception {
 
         // Setup mock
-        Mockito.when(handler.get(1)).thenReturn(workouts.get(0));
+        Mockito.when(manager.getById(1)).thenReturn(workouts.get(0));
 
         // Create expected response
         var expectedResponse = new Gson().toJson(workouts.get(0));
@@ -99,7 +101,7 @@ public class WorkoutControllerIntegrationTests {
     void GetByID_ForUnknownId_ShouldReturn_NotFound() throws Exception {
 
         // Setup mock
-        Mockito.when(handler.get(1)).thenReturn(null);
+        Mockito.when(manager.getById(1)).thenReturn(null);
 
         // Test
         mvc.perform(get("/666"))
@@ -110,7 +112,7 @@ public class WorkoutControllerIntegrationTests {
     void GetType_ShouldReturn_ListOfWorkouts() throws Exception {
 
         // Setup mock
-        Mockito.when(handler.getAllOfType(Type.RUNNING)).thenReturn(workouts);
+        Mockito.when(manager.getAllByType(Type.RUNNING)).thenReturn(workouts);
 
         // Create expected response
         var expectedResponse = new Gson().toJson(workouts);
@@ -125,15 +127,12 @@ public class WorkoutControllerIntegrationTests {
     void GetType_WithNoWorkouts_ShouldReturn_EmptyList() throws Exception {
 
         // Setup mock
-        Mockito.when(handler.getAllOfType(any(Type.class))).thenReturn(null);
-
-        // Create expected response
-        var expectedResponse = new Gson().toJson(null);
+        Mockito.when(manager.getAllByType(any(Type.class))).thenReturn(null);
 
         // Test
         mvc.perform(get("/type/RUNNING"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(expectedResponse));
+                .andExpect(content().string(""));
     }
 
     @Test
@@ -149,7 +148,7 @@ public class WorkoutControllerIntegrationTests {
         var workout = new Workout(1, Type.RUNNING, Level.BEGINNER, Category.LEGS, "Running for beginner", "blaat");
 
         // Setup mock
-        Mockito.when(handler.create(any(Workout.class))).thenReturn(workout);
+        Mockito.when(manager.create(any(Workout.class))).thenReturn(workout);
 
         // Create expected response
         var workoutJson = new Gson().toJson(workout);
