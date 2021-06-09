@@ -1,10 +1,11 @@
-package com.fittefrietjes.workout.managers.handlers;
+package handlers;
 
-import com.fittefrietjes.workout.managers.interfaces.iProfileWorkoutHandler;
-import com.fittefrietjes.workout.models.ProfileWorkout;
+import interfaces.iProfileWorkoutHandler;
+import models.ProfileWorkout;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class ProfileWorkoutHandler implements iProfileWorkoutHandler {
 

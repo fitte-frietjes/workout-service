@@ -1,10 +1,10 @@
 package com.fittefrietjes.workout.unitTests;
 
-import com.fittefrietjes.workout.enums.Category;
-import com.fittefrietjes.workout.enums.Level;
-import com.fittefrietjes.workout.enums.Type;
-import com.fittefrietjes.workout.managers.interfaces.iWorkoutHandler;
-import com.fittefrietjes.workout.models.Workout;
+import enums.Category;
+import enums.Level;
+import enums.Type;
+import interfaces.iWorkoutHandler;
+import models.Workout;
 
 import java.util.ArrayList;
 import java.util.List;

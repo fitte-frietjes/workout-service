@@ -1,7 +1,8 @@
-package com.fittefrietjes.workout.managers;
+package managers;
 
-import com.fittefrietjes.workout.managers.interfaces.iProfileWorkoutHandler;
-import com.fittefrietjes.workout.models.ProfileWorkout;
+
+import models.ProfileWorkout;
+import interfaces.iProfileWorkoutHandler;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
-package com.fittefrietjes.workout.controllers;
+package controllers;
 
-import com.fittefrietjes.workout.managers.ProfileWorkoutManager;
-import com.fittefrietjes.workout.managers.WorkoutManager;
-import com.fittefrietjes.workout.models.ProfileWorkout;
+import managers.ProfileWorkoutManager;
+import managers.WorkoutManager;
+import models.ProfileWorkout;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

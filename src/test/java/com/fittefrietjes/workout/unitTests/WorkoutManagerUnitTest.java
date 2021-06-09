@@ -1,10 +1,10 @@
 package com.fittefrietjes.workout.unitTests;
 
-import com.fittefrietjes.workout.enums.Category;
-import com.fittefrietjes.workout.enums.Level;
-import com.fittefrietjes.workout.enums.Type;
-import com.fittefrietjes.workout.managers.WorkoutManager;
-import com.fittefrietjes.workout.models.Workout;
+import enums.Category;
+import enums.Level;
+import enums.Type;
+import managers.WorkoutManager;
+import models.Workout;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

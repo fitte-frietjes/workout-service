@@ -1,8 +1,9 @@
-package com.fittefrietjes.workout.models;
+package models;
 
-import com.fittefrietjes.workout.enums.Type;
-import com.fittefrietjes.workout.enums.Category;
-import com.fittefrietjes.workout.enums.Level;
+
+import enums.Category;
+import enums.Level;
+import enums.Type;
 
 public class Workout {
     private int id;

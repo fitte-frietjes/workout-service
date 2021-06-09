@@ -1,7 +1,7 @@
-package com.fittefrietjes.workout.managers.interfaces;
+package interfaces;
 
-import com.fittefrietjes.workout.models.Workout;
-import com.fittefrietjes.workout.enums.Type;
+import models.Workout;
+import enums.Type;
 
 import java.util.List;
 

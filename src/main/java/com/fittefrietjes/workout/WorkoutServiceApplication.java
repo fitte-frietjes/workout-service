@@ -1,10 +1,10 @@
 package com.fittefrietjes.workout;
 
 
-import com.fittefrietjes.workout.managers.ProfileWorkoutManager;
-import com.fittefrietjes.workout.managers.WorkoutManager;
-import com.fittefrietjes.workout.managers.handlers.ProfileWorkoutHandler;
-import com.fittefrietjes.workout.managers.handlers.WorkoutHandler;
+import managers.ProfileWorkoutManager;
+import managers.WorkoutManager;
+import handlers.ProfileWorkoutHandler;
+import handlers.WorkoutHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -18,12 +18,12 @@ public class WorkoutServiceApplication {
 
 
     @Bean
-    public WorkoutManager workoutManager(){
-        return  new WorkoutManager(workoutHandler);
+    public WorkoutManager workoutManager() {
+        return new WorkoutManager(workoutHandler);
     }
 
     @Bean
-    public ProfileWorkoutManager profileWorkoutManager(){
+    public ProfileWorkoutManager profileWorkoutManager() {
         return new ProfileWorkoutManager(profileWorkoutHandler);
     }
 

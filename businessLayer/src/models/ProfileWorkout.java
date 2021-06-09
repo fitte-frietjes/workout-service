@@ -1,4 +1,4 @@
-package com.fittefrietjes.workout.models;
+package models;
 
 public class ProfileWorkout {
 

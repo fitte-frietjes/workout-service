@@ -1,4 +1,4 @@
-package com.fittefrietjes.workout.enums;
+package enums;
 
 public enum Category {
     WHOLE, UPPER, LOWER, ARMS, BACK, LEGS

@@ -1,9 +1,8 @@
-package com.fittefrietjes.workout.controllers;
+package controllers;
 
-import com.fittefrietjes.workout.enums.Type;
-import com.fittefrietjes.workout.managers.WorkoutManager;
-import com.fittefrietjes.workout.managers.handlers.WorkoutHandler;
-import com.fittefrietjes.workout.models.Workout;
+import enums.Type;
+import managers.WorkoutManager;
+import models.Workout;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
